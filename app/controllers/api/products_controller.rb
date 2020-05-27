@@ -1,18 +1,18 @@
 class Api::ProductsController < ApplicationController
   
-  def see_all_products
+  def all_products
     @products = Product.all
     render 'all_products.json.jb'
   end
   
-  def see_fly_swatter
+  def display_fly_swatter
     @product = Product.find_by(name: "fly swatter")
-    render 'fly_swatter.json.jb'
+    render 'one_product.json.jb'
   end
   
-  def see_newest_product
+  def display_newest_product
     @product = Product.last
-    render 'newest_product.json.jb'
+    render 'one_product.json.jb'
   end
 
 end

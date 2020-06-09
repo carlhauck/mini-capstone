@@ -1,0 +1,6 @@
+{ 
+  id: image.id,
+  url: image.url,
+  product_id: image.product_id,
+  product_name: image.product.name
+}

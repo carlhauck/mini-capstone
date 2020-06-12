@@ -8,6 +8,7 @@
   total: product.total,
   in_stock: product.in_stock?,
   supplier: product.supplier.name,
+  categories: product.category_names,
   images: product.images,
   formatted: {
     subtotal: number_to_currency(product.price),

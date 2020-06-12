@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   has_many :images
   has_many :orders
   has_many :product_categories
+  has_many :categories, through: :product_categories
   
   validates :name, length: { in: 1..100 }, uniqueness: { case_sensitive: false }
   validates :price, presence: true, numericality: { greater_than: 0 }
@@ -19,6 +20,10 @@ class Product < ApplicationRecord
 
   def total
     price + tax
+  end
+
+  def category_names
+    categories.map { |category| category.name }
   end
 
 end

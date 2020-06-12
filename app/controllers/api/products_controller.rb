@@ -1,5 +1,7 @@
 class Api::ProductsController < ApplicationController
   
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @products = Product.all
     if params[:search]
@@ -29,7 +31,8 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       price: params[:price],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier_id]
     )
     if @product.save
       render "show.json.jb"
@@ -43,6 +46,7 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
+    @product.supplier_id = params[:supplier_id] || @product.supplier_id
     if @product.save
       render "show.json.jb"
     else

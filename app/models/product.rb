@@ -2,9 +2,9 @@ class Product < ApplicationRecord
 
   belongs_to :supplier
   has_many :images
-  has_many :orders
   has_many :product_categories
   has_many :categories, through: :product_categories
+  has_many :carted_products
   
   validates :name, length: { in: 1..100 }, uniqueness: { case_sensitive: false }
   validates :price, presence: true, numericality: { greater_than: 0 }

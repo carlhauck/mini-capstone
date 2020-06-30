@@ -6,9 +6,9 @@ class Product < ApplicationRecord
   has_many :categories, through: :product_categories
   has_many :carted_products
   
-  validates :name, length: { in: 1..100 }, uniqueness: { case_sensitive: false }
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true, length: { in: 5..500 }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :price, presence: true, numericality: true
+  validates :description, presence: true
 
   def is_discounted?
     price < 10

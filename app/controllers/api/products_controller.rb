@@ -51,6 +51,7 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
     @product.supplier_id = params[:supplier_id] || @product.supplier_id
+    @product.in_stock = params[:in_stock] || @product.in_stock
     if @product.save
       render "show.json.jb"
     else

@@ -24,4 +24,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if current_user.id == @user.id
+      @user.destroy
+      render json: {message: "User has been deleted."}
+    else
+      render json: {}
+    end
+  end
+
 end

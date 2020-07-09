@@ -23,6 +23,7 @@ class Api::ImagesController < ApplicationController
   end
 
   def update
+    @image = Image.find(params[:id])
     @image.url = params[:url] || @image.url
     @image.product_id = params[:product_id] || @image.product_id
     if @image.save
@@ -33,7 +34,7 @@ class Api::ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find_by(id: params[:id])
+    @image = Image.find(params[:id])
     @image.destroy
     render json: {message: "Image has been deleted."}
   end
